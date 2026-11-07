@@ -1,4 +1,4 @@
-# Menù di Casa 
+# Menù di Casa
 
 Web app che prepara il menu della settimana e, a ogni uso, impara i gusti della famiglia.
 È **tutto gratuito**: niente AI a pagamento, l'apprendimento avviene nel browser.
@@ -45,7 +45,7 @@ Poi aprite http://localhost:5173. Senza Supabase i dati restano nel browser.
 1. Su https://supabase.com create un nuovo progetto (va bene il piano Free).
 2. Aprite **SQL Editor → New query**, incollate il contenuto di `supabase/schema.sql` e premete **Run**.
 3. In **Project Settings → API Keys** copiate il *Project URL* e la *Publishable key*.
-4. Incollateli in `js/config.js`.
+4. Incollateli in `config.js`.
 
 Al primo avvio con il database vuoto, l'app ci carica il ricettario iniziale e quello che avevate già nel browser.
 
@@ -84,25 +84,29 @@ Note:
 
 ## Pubblicarla su GitHub Pages
 
-1. Create un repository su GitHub e caricate tutta la cartella sul branch `main`.
-2. Nel repository andate in **Settings → Pages → Source: GitHub Actions**.
-3. A ogni push il workflow `.github/workflows/pages.yml` pubblica il sito.
+Tutti i file del sito stanno nella cartella principale, come in GE WoodArt,
+così si caricano dal sito di GitHub senza problemi di sottocartelle.
+
+1. Nel repository: **Add file → Upload files**, selezionate tutti i file della cartella principale
+   (non servono `supabase/`, `.claude/` e `.github/`) e premete **Commit changes**.
+2. **Settings → Pages → Source: Deploy from a branch**, branch `main`, cartella `/ (root)`, **Save**.
+3. Il sito è su `https://sud98.github.io/menu_settimanale/`.
 4. Dal telefono aprite il sito e scegliete "Aggiungi a schermata Home".
 
-Dopo una modifica ai file conviene alzare la versione in `sw.js` (`menu-di-casa-v1` → `v2`):
+Dopo una modifica ai file conviene alzare la versione in `sw.js` (`menu-di-casa-v3` → `v4`):
 così i telefoni scaricano subito la versione nuova.
 
 ## File
 
 | File | Cosa contiene |
 |---|---|
-| `index.html`, `css/style.css` | pagina e stile (chiaro/scuro automatico) |
-| `js/app.js` | schermate: Menu, Spesa, Piatti, Gusti, Profilo |
-| `js/engine.js` | generazione del menu e apprendimento |
-| `js/store.js` | salvataggio su Supabase oppure nel browser |
-| `js/ai.js` | richieste all'assistente AI |
+| `index.html`, `style.css` | pagina e stile (chiaro/scuro automatico) |
+| `app.js` | schermate: Menu, Spesa, Piatti, Gusti, Profilo |
+| `engine.js` | generazione del menu e apprendimento |
+| `store.js` | salvataggio su Supabase oppure nel browser |
+| `ai.js` | richieste all'assistente AI |
 | `supabase/functions/menu-ai/index.ts` | Edge Function che parla con Gemini (la chiave resta su Supabase) |
-| `js/seed.js` | ricettario iniziale (circa 90 piatti, tutti modificabili dall'app) |
-| `js/config.js` | dati di collegamento a Supabase |
+| `seed.js` | ricettario iniziale (circa 90 piatti, tutti modificabili dall'app) |
+| `config.js` | dati di collegamento a Supabase |
 | `supabase/schema.sql` | tabelle da creare su Supabase |
 | `sw.js`, `manifest.json`, `icon-*.png` | installazione sul telefono e uso senza rete |

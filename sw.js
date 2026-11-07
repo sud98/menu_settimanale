@@ -1,18 +1,18 @@
 // Come in GE WoodArt: prima prova la rete (così le modifiche al sito si vedono subito),
 // se non c'è connessione usa la copia salvata.
 // I dati di Supabase non passano da qui: arrivano sempre dal database.
-const CACHE = 'menu-di-casa-v2';
+const CACHE = 'menu-di-casa-v3';
 
 const FILES = [
   './',
   './index.html',
-  './css/style.css',
-  './js/app.js',
-  './js/engine.js',
-  './js/store.js',
-  './js/ai.js',
-  './js/seed.js',
-  './js/config.js',
+  './style.css',
+  './app.js',
+  './engine.js',
+  './store.js',
+  './ai.js',
+  './seed.js',
+  './config.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
