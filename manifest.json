@@ -1,0 +1,16 @@
+{
+  "name": "Menù di Casa",
+  "short_name": "Menù",
+  "description": "Il menu settimanale che impara i gusti della famiglia",
+  "lang": "it",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf6f1",
+  "theme_color": "#c8553d",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
