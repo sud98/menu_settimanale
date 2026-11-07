@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main id="view" class="view"></main>
+  <main id="view" class="view"><p class="loading">Caricamento…</p></main>
 
   <nav class="tabbar" aria-label="Sezioni">
     <a href="#/menu" data-tab="menu"><span aria-hidden="true">🍽️</span>Menu</a>
@@ -29,6 +29,25 @@
   <dialog id="modal"></dialog>
   <div id="toast" role="status" aria-live="polite"></div>
 
-  <script type="module" src="app.js"></script>
+  <script>
+    // Se manca un file del sito (es. non caricato su GitHub) lo dico invece di lasciare la pagina vuota.
+    function appNonCaricata() {
+      var files = ['app.js', 'engine.js', 'store.js', 'seed.js', 'config.js', 'ai.js', 'style.css'];
+      var view = document.getElementById('view');
+      view.innerHTML = '<p style="padding:16px">Non riesco a caricare l’app: controllo i file…</p>';
+      Promise.all(files.map(function (f) {
+        return fetch(f, { cache: 'no-store' }).then(function (r) { return r.ok ? null : f; }, function () { return f; });
+      })).then(function (mancanti) {
+        mancanti = mancanti.filter(Boolean);
+        view.innerHTML = '<div style="padding:16px;font-family:system-ui">' +
+          '<h2>L’app non si è caricata</h2>' +
+          (mancanti.length
+            ? '<p>Sul sito mancano questi file: <b>' + mancanti.join(', ') + '</b>.<br>Caricali nel repository GitHub e ricarica la pagina.</p>'
+            : '<p>Sembra un problema di connessione: ricarica la pagina.</p>') +
+          '</div>';
+      });
+    }
+  </script>
+  <script type="module" src="app.js" onerror="appNonCaricata()"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 // Come in GE WoodArt: prima prova la rete (così le modifiche al sito si vedono subito),
 // se non c'è connessione usa la copia salvata.
 // I dati di Supabase non passano da qui: arrivano sempre dal database.
-const CACHE = 'menu-di-casa-v3';
+const CACHE = 'menu-di-casa-v4';
 
 const FILES = [
   './',
