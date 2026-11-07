@@ -1,4 +1,4 @@
-# Menù di Casa
+# Menù di Casa 
 
 Web app che prepara il menu della settimana e, a ogni uso, impara i gusti della famiglia.
 È **tutto gratuito**: niente AI a pagamento, l'apprendimento avviene nel browser.
